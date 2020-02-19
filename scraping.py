@@ -102,7 +102,7 @@ def scrape_movie_cast(movies_cast_url):
 			cast_id.append(cast_name)
 	return(cast_id)
 
-# (scrape_movie_cast(top_movies_list[0]["url"]))
+(scrape_movie_cast(top_movies_list[0]["url"]))
 
 # ............4
 def scrape_movie_details(movie_url):
@@ -175,7 +175,7 @@ def scrape_movie_details(movie_url):
 			json.dump(movies_details,copy)
 	
 		return(movies_details)	
-# scrape_movie_details(url_10_all)
+scrape_movie_details(url_10_all)
 # ..........5
 
 def get_movie_list_details(movies_list):
@@ -188,80 +188,83 @@ def get_movie_list_details(movies_list):
 	# pprint(movies_url_list)
 	return(movies_url_list)
 you=get_movie_list_details(top_movies_list)
-# pprint(movies_detail_list)
+pprint(movies_detail_list)
 # ...........6
-# def analyse_movies_language(movies_list):
-# 	check_list1={}
-# 	count=[]
-# 	for i in movies_list:
-# 		for j in i["language"]:
-# 			count.append(j)
-# 	for x in count:
-# 		if x not in check_list1:
-# 			check_list1[x]=1
-# 		else:
-# 			check_list1[x]+=1
-# 	return(check_list1)
+
+def analyse_movies_language(movies_list):
+	check_list1={}
+	count=[]
+	for i in movies_list:
+		for j in i["language"]:
+			count.append(j)
+	for x in count:
+		if x not in check_list1:
+			check_list1[x]=1
+		else:
+			check_list1[x]+=1
+	return(check_list1)
 
 
-# analyse_movies_language(movies_detail_list)
+analyse_movies_language(movies_detail_list)
 
 # ..........7
-# def analyse_movies_directors(movies_directors):
-# 	Director_list=[]
-# 	movies_directors_list={}
-# 	for i in movies_directors:
-# 		for j in i["Director"]:
-# 			# print(j)
-# 			Director_list.append(j)
-# 	for c in Director_list:
-# 		if c not in movies_directors_list:
-# 			movies_directors_list[c]=1
-# 		else:
-# 			movies_directors_list[c]+=1
-# 	return(movies_directors_list)
-# analyse_movies_directors(movies_detail_list)
+
+def analyse_movies_directors(movies_directors):
+	Director_list=[]
+	movies_directors_list={}
+	for i in movies_directors:
+		for j in i["Director"]:
+			# print(j)
+			Director_list.append(j)
+	for c in Director_list:
+		if c not in movies_directors_list:
+			movies_directors_list[c]=1
+		else:
+			movies_directors_list[c]+=1
+	return(movies_directors_list)
+analyse_movies_directors(movies_detail_list)
 
 
-# ..........................10
-# def analyse_language_and_directors(coun):
-# 	Director_list={}
-# 	for d in coun:
-# 		for Dir in d["Director"]:
-# 			Director_list[Dir]={}
-# 	# print(Director_list)
-# 	for i in range(len(coun)):
-# 		for j in Director_list:
-# 			if j in coun[i]["Director"]:
-# 				for Language in coun[i]["language"]:
-# 					Director_list[j][Language]=0
+..........................10
+def analyse_language_and_directors(coun):
+	Director_list={}
+	for d in coun:
+		for Dir in d["Director"]:
+			Director_list[Dir]={}
+	# print(Director_list)
+	for i in range(len(coun)):
+		for j in Director_list:
+			if j in coun[i]["Director"]:
+				for Language in coun[i]["language"]:
+					Director_list[j][Language]=0
 
-# 	for i in range(len(coun)):
-# 		for j in Director_list:
-# 			if j in coun[i]["Director"]:
-# 				for Language in coun[i]["language"]:
-# 					Director_list[j][Language]+=1
-	# pprint(Director_list)
+	for i in range(len(coun)):
+		for j in Director_list:
+			if j in coun[i]["Director"]:
+				for Language in coun[i]["language"]:
+					Director_list[j][Language]+=1
+	pprint(Director_list)
 
 	
 
-# analyse_language_and_directors(movies_detail_list)
+analyse_language_and_directors(movies_detail_list)
 
 # ............................11
-# def analyse_movies_genre(movies_list):
-# 	genre_list=[]
-# 	genre_dic={}
-# 	for i in movies_list:
-# 		for genre  in i["genre"]:
-# 			genre_list.append(genre)
-# 	for k in genre_list:
-# 		if k not in genre_dic:
-# 			genre_dic[k]=1
-# 		else:
-# 			genre_dic[k]+=1
-# 	return(genre_dic) 
+
+def analyse_movies_genre(movies_list):
+	genre_list=[]
+	genre_dic={}
+	for i in movies_list:
+		for genre  in i["genre"]:
+			genre_list.append(genre)
+	for k in genre_list:
+		if k not in genre_dic:
+			genre_dic[k]=1
+		else:
+			genre_dic[k]+=1
+	return(genre_dic) 
 			
-# analyse_movies_genre(movies_detail_list)
+analyse_movies_genre(movies_detail_list)
 
 # .......................14
 
@@ -301,4 +304,4 @@ def co_actors(co_casts):
 				if count==5:
 					break
 	return (empty)
-# pprint(co_actors(you))
+pprint(co_actors(you))
